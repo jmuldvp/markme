@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 # After pushing to heroku, I was advised to add this line. Heroku told me 2.2.4.
 # When issuing bundler install I got an error stating I needed to use 2.3.1
-ruby '2.3.1'
+# ruby '2.3.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
@@ -46,7 +46,7 @@ group :test do
   # gems added per instructor
   # gem 'rspec-rails'
   gem 'shoulda'
-  gem 'simplecov'
+  gem 'simplecov', :require => false, :group => :test
 end
 
 group :development, :test do
