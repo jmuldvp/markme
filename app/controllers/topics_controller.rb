@@ -18,15 +18,35 @@ class TopicsController < ApplicationController
   # end
 
   def create
-    @topic = Topic.new
-    @topic.title = params[:topic]
+    @user = current_user
+    @topic = @user.topics.build(topic_params)
 
     if @topic.save
       flash[:notice] = "Topic was saved successfully."
       redirect_to @topic
     else
-      flash.now[:alert] = "Error creating topic. Please try again."
+      # flash.now[:alert] = "Error creating topic. Please try again."
+      flash.now[:alert] = "You need to sign in or sign up before continuing."
       render :new
     end
   end
+
+  def destroy
+    @topic = Topic.find(params[:id])
+
+    if @topic.destroy
+      flash[:notice] = "\"#{@topic.title}\" was deleted successfully."
+      redirect_to topics_path
+    else
+      flash.now[:alert] = "There was an error deleting the post."
+      render :show
+    end
+  end
+
+  private
+
+  def topic_params
+    params.require(:topic).permit(:title)
+  end
+
 end
