@@ -23,15 +23,16 @@ users = User.all
     user: users.sample
   )
 end
-titles = Topic.all
+topics = Topic.all
 
-# 75.times do
-#   Bookmark.create!(
-#     url: Faker::Internet.url,
-#     title: titles.all
-#   )
-# end
+75.times do
+  Bookmark.create!(
+    url: Faker::Internet.url,
+    topic: topics.sample
+  )
+end
 
 puts "Seed finished"
 puts "#{User.count} users created."
 puts "#{Topic.count} items created."
+puts "#{Bookmark.count} bookmarks created."
