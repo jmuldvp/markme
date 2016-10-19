@@ -1,6 +1,10 @@
-<tbody>
-  <%= content_tag :tr, class: "media", id: "bookmark-#{bookmark.url}" do %>
-    <td><%= link_to bookmark.url %></td>
-  <% end %>
-</tbody>
+
+<%= content_tag :tr, class: "media", id: "bookmark-#{bookmark.url}" do %>
+  <td><%= link_to bookmark.url %></td>
+  <td><%= link_to "Edit", edit_topic_bookmark_path([@topic, @bookmark]) %></td>
+  <td><%= link_to "Delete", @bookmark, method: :delete %></td>
+  <!-- <td><%#= link_to "Delete", @bookmark.topic, method: :delete %></td> -->
+  <!-- <td><%#= link_to "Delete", [@bookmark.topic, @bookmark], method: :delete %></td> -->
+<% end %>
+
 <!-- Same as blocitoff app/views/items/_item.html.erb -->

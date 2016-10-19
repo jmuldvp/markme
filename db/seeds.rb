@@ -27,6 +27,7 @@ topics = Topic.all
 
 75.times do
   Bookmark.create!(
+    user: users.sample,
     url: Faker::Internet.url,
     topic: topics.sample
   )
