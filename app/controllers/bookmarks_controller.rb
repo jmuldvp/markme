@@ -19,7 +19,7 @@ class BookmarksController < ApplicationController
       flash.now[:alert] = "You need to be logged in to save bookmarks."
       # render :new
     end
-    redirect_to @bookmark
+    redirect_to @topic
   end
 
   def update
@@ -50,7 +50,7 @@ class BookmarksController < ApplicationController
     else
       flash.now[:alert] = "There was an error deleting the bookmark."
     end
-    redirect_to @topic
+    redirect_to @bookmark.topic
   end
 
 
