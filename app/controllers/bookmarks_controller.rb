@@ -1,5 +1,7 @@
 class BookmarksController < ApplicationController
   before_action :authenticate_user!, except: [:index, :about]
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+  before_action :authorize_user, except: [:index, :about, :show]
 
   def new
     @topic = Topic.find(params[:topic_id])
@@ -58,6 +60,15 @@ class BookmarksController < ApplicationController
 
   def bookmark_params
     params.require(:bookmark).permit(:url)
+  end
+
+  def authorize_user
+    @bookmark = Bookmark.find(params[:id])
+
+    if current_user != @bookmark.user_id
+      flash[:alert] = "You must be the owner or admin to do that."
+      redirect_to topic_path
+    end
   end
 
 end

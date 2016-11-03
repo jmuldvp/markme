@@ -87,3 +87,6 @@ gem 'devise'
 
 # per cp 44 that referenced https://www.bloc.io/resources/environment-variables-with-figaro
 gem 'figaro', '1.0'
+
+# per cp 7 in blockmarks project
+gem 'pundit'
