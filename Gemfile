@@ -44,9 +44,9 @@ group :test do
   # gem 'byebug', platform: :mri # in original files
 
   # gems added per instructor
-  # gem 'rspec-rails'
   gem 'shoulda'
   gem 'simplecov', :require => false, :group => :test
+  gem 'pundit-matchers', '~> 1.1.0'
 end
 
 group :development, :test do

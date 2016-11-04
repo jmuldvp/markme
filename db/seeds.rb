@@ -18,7 +18,7 @@ User.create!( email: "user2@user.com", password: "pas123", password_confirmation
 end
 users = User.all
 
-3.times do
+2.times do
   Topic.create!(
     title: Faker::Company.bs, # I'd rather see this than Lorem ipsum
     user: users.sample
@@ -36,5 +36,5 @@ end
 
 puts "Seed finished"
 puts "#{User.count} users created."
-puts "#{Topic.count} items created."
+puts "#{Topic.count} topics created."
 puts "#{Bookmark.count} bookmarks created."
