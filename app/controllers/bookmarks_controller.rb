@@ -1,5 +1,7 @@
 class BookmarksController < ApplicationController
   before_action :authenticate_user!, except: [:index, :about]
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+  # before_action :authorize_user, except: [:index, :about, :show]
 
   def new
     @topic = Topic.find(params[:topic_id])
@@ -44,6 +46,7 @@ class BookmarksController < ApplicationController
 
   def destroy
     @bookmark = Bookmark.find(params[:id])
+    authorize @bookmark
 
     if @bookmark.destroy
       flash[:notice] = "\"#{@bookmark.url}\" was deleted successfully."
@@ -58,6 +61,11 @@ class BookmarksController < ApplicationController
 
   def bookmark_params
     params.require(:bookmark).permit(:url)
+  end
+
+  def user_not_authorized
+    flash[:alert] = "You must be the owner or admin to do that."
+    redirect_to (request.referrer || root_path)
   end
 
 end

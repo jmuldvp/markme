@@ -1,6 +1,8 @@
 
 <%= content_tag :tr, class: "media", id: "bookmark-#{bookmark.url}" do %>
   <td><%= link_to bookmark.url %></td>
-  <td><%= link_to "Edit", edit_topic_bookmark_path([@topic, @bookmark]) %></td>
-  <td><%= link_to "Delete", [bookmark.topic, bookmark], method: :delete %></td>
+  <% if current_user %>
+    <td><%= link_to "Edit", edit_topic_bookmark_path([@topic, @bookmark]) %></td>
+    <td><%= link_to "Delete", [bookmark.topic, bookmark], method: :delete %></td>
+  <% end %>
 <% end %>
