@@ -16,7 +16,7 @@ class LikesController < ApplicationController
       flash.now[:alert] = "There was an error saving your 'Like'."
       # redirect_to [bookmark.topic, bookmark]
     end
-    redirect_to [@bookmark.topic, bookmark]
+    redirect_to @bookmark.topic
   end
 
   def destroy
@@ -30,7 +30,7 @@ class LikesController < ApplicationController
       flash.now[:alert] = "There was an error removing your 'Like'."
       # redirect_to @topic
     end
-    redirect_to [@bookmark.topic, @bookmark]
+    redirect_to @bookmark.topic
   end
 
 end
