@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  has_many :topics
-  has_many :bookmarks
+  has_many :topics, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
   has_many :likes, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
