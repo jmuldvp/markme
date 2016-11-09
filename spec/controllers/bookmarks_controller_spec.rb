@@ -49,4 +49,24 @@ RSpec.describe BookmarksController, type: :controller do
     end
   end
 
+  describe "PUT update" do
+    before do
+      sign_in my_user
+    end
+
+    it "updates bookmark with expected attributes" do
+      new_url = "http://www.reddit.com/"
+      put :update, topic_id: my_topic.id, id: my_bookmark.id, bookmark: {url: new_url }
+      updated_bookmark = assigns(:bookmark)
+      expect(updated_bookmark.id).to eq my_bookmark.id
+      expect(updated_bookmark.url).to eq new_url
+    end
+
+    it "redirects to the updated bookmark on the topic show page" do
+      new_url = "www.linkedin.com"
+      put :update, topic_id: my_topic.id, id: my_bookmark.id, bookmark: {url: new_url}
+      expect(response).to redirect_to [my_topic]
+    end
+  end
+
 end
