@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+  before_save { self.email = email.downcase if email.present? }
+
+  validates :email, length: { minimum: 4, maximum: 100 }, presence: true
+  
   has_many :topics, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
   has_many :likes, dependent: :destroy

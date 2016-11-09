@@ -14,21 +14,19 @@ class LikesController < ApplicationController
       flash[:notice] = "'Like' was saved."
     else
       flash.now[:alert] = "There was an error saving your 'Like'."
-      # redirect_to [bookmark.topic, bookmark]
     end
     redirect_to @bookmark.topic
   end
 
   def destroy
     @bookmark = Bookmark.find(params[:bookmark_id])
-    like = current_user.likes.build(bookmark: @bookmark)
+    like = current_user.likes.find(params[:id])
 
     authorize like
     if like.destroy
       flash[:notice] = "'Like' was removed."
     else
       flash.now[:alert] = "There was an error removing your 'Like'."
-      # redirect_to @topic
     end
     redirect_to @bookmark.topic
   end
