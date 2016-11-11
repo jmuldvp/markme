@@ -2,7 +2,7 @@ class User < ApplicationRecord
   before_save { self.email = email.downcase if email.present? }
 
   validates :email, length: { minimum: 4, maximum: 100 }, presence: true
-  
+
   has_many :topics, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
   has_many :likes, dependent: :destroy
@@ -14,5 +14,9 @@ class User < ApplicationRecord
 
   def liked(bookmark)
     likes.where(bookmark_id: bookmark.id).first
+  end
+
+  def user_liked_bookmarks
+    likes.includes(bookmark: :topic).map(&:bookmark)
   end
 end
