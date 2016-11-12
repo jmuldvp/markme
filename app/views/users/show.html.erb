@@ -9,9 +9,10 @@
           <h4 class="media-heading">
             <!-- Loop through bookmark information -->
             <!-- Able to click on link, edit, like and delete -->
-            <!-- <%# .each do %>
-
-            <%# end %> -->
+            <!-- <%#= render @bookmarks %> -->
+            <% @user_bookmarks.each do |bookmarks, topic| %>
+              <%= render partial: 'bookmarks/bookmark', locals: { topic: @bookmark.topic, bookmark: @bookmark} %>
+            <% end %>
           </h4>
         </div>
       </div>
