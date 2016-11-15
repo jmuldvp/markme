@@ -1,19 +1,19 @@
 <h3>My Bookmarks</h3>
-
 <div class="row">
   <div class="col-md-8">
     <% @user_bookmarks.each do |topic, bookmarks| %>
       <h4><%= link_to topic.title, topic_path(topic) %></h4>
       <div class="media">
         <div class="media-body">
-          <h4 class="media-heading">
-            <!-- Loop through bookmark information -->
-            <!-- Able to click on link, edit, like and delete -->
-            <!-- <%#= render @bookmarks %> -->
-            <% @user_bookmarks.each do |bookmarks, topic| %>
-              <%= render partial: 'bookmarks/bookmark', locals: { topic: @bookmark.topic, bookmark: @bookmark} %>
-            <% end %>
-          </h4>
+          <table class="table table-hover">
+            <tbody>
+              <tr class='js-items'>
+                <% bookmarks.each do |bookmark| %>
+                  <%= render partial: 'bookmarks/bookmark', locals: { topic: bookmark.topic, bookmark: bookmark} %>
+                <% end %>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     <% end %>
@@ -31,13 +31,15 @@
       <h4><%= link_to topic.title, topic_path(topic) %></h4>
       <div class="media">
         <div class="media-body">
-          <h4 class="media-heading">
-            <!-- Loop through bookmark information -->
-            <!-- Able to click on link, edit, like and delete -->
-            <!-- <%# .each do %>
-
-            <%# end %> -->
-          </h4>
+          <table class="table table-hover">
+            <tbody>
+              <tr class='js-items'>
+                <% bookmarks.each do |bookmark| %>
+                  <%= render partial: 'bookmarks/bookmark', locals: { topic: bookmark.topic, bookmark: bookmark} %>
+                <% end %>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     <% end %>
