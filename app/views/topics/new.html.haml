@@ -1,0 +1,15 @@
+%h1 New Topic
+.row
+  .col-md-4
+    %p Guidelines for Topics
+    %ul
+      %li Make sure it rhymes.
+      %li Don't use the letter "A".
+      %li The incessant use of hashtags will get you banned.
+  .col-md-8
+    = form_for @topic do |f|
+      .form-group
+        = f.label :title
+        = f.text_field :title, class: 'form-control', placeholder: "Enter topic title"
+      .form-group
+        = f.submit "Save", class: 'btn btn-success'

@@ -26,13 +26,55 @@ users = User.all
 end
 topics = Topic.all
 
-9.times do
-  Bookmark.create!(
-    user: users.sample,
-    url: Faker::Internet.url,
-    topic: topics.sample
-  )
-end
+# 9.times do
+Bookmark.create!(
+  user: users.sample,
+  url: "https://www.facebook.com",
+  topic: topics.sample
+)
+
+Bookmark.create!(
+  user: users.sample,
+  url: "https://www.amazon.com",
+  topic: topics.sample
+)
+# end
+
+Bookmark.create!(
+  user: users.sample,
+  url: "https://github.com",
+  topic: topics.sample
+)
+
+Bookmark.create!(
+  user: users.sample,
+  url: "http://haml.info",
+  topic: topics.sample
+)
+
+Bookmark.create!(
+  user: users.sample,
+  url: "https://twitter.com",
+  topic: topics.sample
+)
+
+Bookmark.create!(
+  user: users.sample,
+  url: "http://bloc.io/",
+  topic: topics.sample
+)
+
+Bookmark.create!(
+  user: users.sample,
+  url: "http://exercism.io",
+  topic: topics.sample
+)
+
+Bookmark.create!(
+  user: users.sample,
+  url: "https://www.linkedin.com",
+  topic: topics.sample
+)
 
 puts "Seed finished"
 puts "#{User.count} users created."
