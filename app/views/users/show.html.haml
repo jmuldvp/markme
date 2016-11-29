@@ -1,0 +1,26 @@
+%h3 My Bookmarks
+.row
+  .col-md-8
+    - @user_bookmarks.each do |topic, bookmarks|
+      %h4= link_to topic.title, topic_path(topic)
+      .media
+        .media-body
+          %table.table.table-hover
+            %tbody
+              %tr.js-items
+                - bookmarks.each do |bookmark|
+                  = render partial: 'bookmarks/bookmark', locals: { topic: bookmark.topic, bookmark: bookmark}
+  .col-md-4
+    = link_to "New Topic", new_topic_path, class: 'btn btn-success'
+%h3 My Liked Bookmarks
+.row
+  .col-md-8
+    - @liked_bookmarks.each do |topic, bookmarks|
+      %h4= link_to topic.title, topic_path(topic)
+      .media
+        .media-body
+          %table.table.table-hover
+            %tbody
+              %tr.js-items
+                - bookmarks.each do |bookmark|
+                  = render partial: 'bookmarks/bookmark', locals: { topic: bookmark.topic, bookmark: bookmark}
