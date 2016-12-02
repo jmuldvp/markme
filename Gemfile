@@ -8,6 +8,7 @@ source 'https://rubygems.org'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 # Use sqlite3 as the database for Active Record
 gem 'haml'
+gem 'friendly_id', '~> 5.1.0'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
