@@ -4,13 +4,13 @@ class BookmarksController < ApplicationController
   # before_action :authorize_user, except: [:index, :about, :show]
 
   def new
-    @topic = Topic.find(params[:topic_id])
+    @topic = Topic.friendly.find(params[:topic_id])
     @bookmark = Bookmark.new
   end
 
   def create
     # @user = current_user
-    @topic = Topic.find(params[:topic_id])
+    @topic = Topic.friendly.find(params[:topic_id])
     @bookmark = @topic.bookmarks.build(bookmark_params)
     @bookmark.user = current_user
 
